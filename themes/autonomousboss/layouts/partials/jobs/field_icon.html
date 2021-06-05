@@ -1,0 +1,15 @@
+{{ if eq . "business" }}
+<i class="fas fa-handshake" alt="Business" title="Business"></i>
+{{ else if eq . "engineering" }}
+<i class="fas fa-wrench" alt="Engineering" title="Engineering"></i>
+{{ else if eq . "design" }}
+<i class="fas fa-pencil-ruler" alt="Design" title="Design"></i>
+{{ else if eq . "community" }}
+<i class="fas fa-users" alt="Community" title="Community"></i>
+{{ else if eq . "marketing" }}
+<i class="fas fa-bullhorn" alt="Marketing" title="Marketing"></i>
+{{ else if eq . "support" }}
+<i class="fas fa-medkit" alt="Support" title="Support"></i>
+{{ else if eq . "content" }}
+<i class="fas fa-keyboard" alt="Content" title="Content"></i>
+{{ end }}

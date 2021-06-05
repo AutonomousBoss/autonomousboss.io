@@ -1,0 +1,15 @@
+[build]
+publish = "public"
+command = """
+yarn install
+mkdir -p ./data
+node scripts/import.js
+hugo
+"""
+
+[[headers]]
+for = "/*"
+[headers.values]
+cache-control = "max-age=10800"
+X-Frame-Options = "DENY"
+X-XSS-Protection = "1; mode=block"

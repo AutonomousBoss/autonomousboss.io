@@ -1,0 +1,28 @@
+<nav class="nav">
+  <div class="wrap">
+    <div class="logo">
+      <a href="/" class="text"><img src="/images/logo.png"/>Autonomous <span class="light">Boss</span></a>
+    </div>
+    <div class="wrap-list">
+      <ul>
+        {{ $currentPage := . }}
+        {{ range .Site.Menus.main }}
+        <li {{if eq $currentPage.RelPermalink .URL }}class="active"{{end}}>
+          <a href="{{.URL | absURL}}">{{ .Name }}</a>
+        </li>
+        {{end}}
+      </ul>
+    </div>
+    <div class="wrap-social">
+      <button class="submit-job"><span>Submit job</span> <i class="fas fa-plus"></i></button>
+      <ul>
+        {{ range .Site.Menus.social }}
+        <li><a href="{{.URL }}" target=”_blank”><i class="fab fa-{{.Name}}"></i></a></li>
+        {{end}}
+      </ul>
+      <button class="btn-nav toggle">
+        <i class="fas fa-bars menu"></i><i class="fas fa-times cross"></i>
+      </button>
+    </div>
+  </div>
+</nav>

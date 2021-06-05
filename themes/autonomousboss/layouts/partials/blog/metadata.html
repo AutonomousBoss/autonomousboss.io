@@ -1,0 +1,24 @@
+<div class="blog-detail-author">
+  <div class="blog-detail-author-profile">
+    <img src="/images/blog/profile-dao-jones.jpg" alt="Author">
+    <div class="blog-detail-author-name">
+      <span>{{ .Params.author }}</span>
+      <div>
+        <p>{{ .Date.Format "Jan 02, 2006" }}</p>
+        {{ range $index, $tag := .Params.tags }}
+        {{ with $.Site.GetPage (printf "/%s/%s" "tags" $tag) }}
+        <a href="{{ .Permalink }}">{{ $tag }}</a>
+        {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+  <div class="blog-detail-author-social">
+    <p>Share</p>
+    <ul>
+      <li><a target="_blank" href="https://twitter.com/share?url={{ .Permalink }}"><i class="fab fa-twitter"></i></a></li>
+      <li><a target="_blank" href="https://t.me/share/url?url={{ .Permalink }}&text={{ .Params.title }}"><i class="fab fa-telegram-plane"></i></a></li>
+      <li><a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url={{ .Permalink }}&text={{ .Params.title }}"><i class="fab fa-linkedin-in"></i></a></li>
+    </ul>
+  </div>
+</div>

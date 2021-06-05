@@ -1,0 +1,20 @@
+baseURL = "https://autonomousboss.io"
+languageCode = "en-us"
+title = "Autonomous Boss"
+theme = "autonomousboss"
+
+DefaultContentLanguage = "en"
+disableHugoGeneratorInject = true
+
+[taxonomies]
+tag = "tags"
+author = "authors"
+field = "fields"
+network = "networks"
+platform = "platforms"
+
+[permalinks]
+  "/" = "/:filename"
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]

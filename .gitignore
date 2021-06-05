@@ -1,0 +1,17 @@
+.env
+
+# CMS-generated files
+/data/cms.json
+
+# Hugo-generated files
+/public
+/resources/_gen
+/.sass-cache
+
+# Node.js
+node_modules
+
+# Editor files
+.idea
+*.iml
+.vscode

@@ -1,0 +1,9 @@
+<div class="filter-item">
+  <p class="filter-item-name">Networks</p>
+  <div class="filter-item-network">
+    {{ range . }}
+    {{- $lower := . | lower -}}
+    <a href="/networks/ethereum"><button class="color-{{ $lower }}"><img src="/images/icons/{{ $lower}}-white.svg">{{ . | title }}</button></a>
+    {{ end }}
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="blog-box">
+  <div class="blog-box-image">
+    {{ if eq .Params.image "" }}
+    <img src="/images/blog/default.png" alt="default blog post image">
+    {{ else }}
+    <img src="/images/blog/{{ .Params.image }}" alt="{{ .Params.image }}">
+    {{ end }}
+  </div>
+  <div class="blog-box-content">
+    <div class="blog-box-category">
+      {{ range $index, $tag := (.Param "tags" | sort) }}
+      {{ with $.Site.GetPage (printf "/%s/%s" "tags" $tag) }}
+      <a href="{{ .Permalink }}">{{ $tag }}</a>
+      {{ end }}
+      {{ end }}
+    </div>
+    <div class="blog-box-heading">
+      <a href="{{ .Permalink }}"><h1>{{ .Title }}</h1></a>
+      <p>Written by <a href="#">{{ .Params.author }}</a> on {{.Date.Format "Jan 02, 2006"}}</p>
+    </div>
+    <div class="blog-box-text">
+      {{ truncate 140 .Summary }}
+    </div>
+    <div class="blog-box-btn">
+      <button><a href="{{ .Permalink }}">Read more</a></button>
+    </div>
+  </div>
+</div>

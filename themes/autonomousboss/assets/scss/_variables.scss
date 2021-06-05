@@ -1,0 +1,81 @@
+$font: 'Manrope', sans-serif;
+
+// Colors:
+$white: #ffffff;
+$black: #000000;
+
+$light-grey: #e7ecf2;
+$medium-grey-1: #d0d0d0;
+$medium-grey: #dbdbdb;
+$dark-grey: #a7a9c9;
+
+//$dark-grey: #434343;
+$dark-grey: #4a4a4a;
+$dark-grey-2: #515151;
+
+$primary: #14163a;
+$secondary: #1276ff;
+$text-dark: $primary;
+$text-light: rgba($primary, .66);
+
+$accent-purple: #38357b;
+$accent-blue: #00275c;
+$accent-light-blue-1: #ddecff;
+$accent-light-blue-2: #e7f2fa;
+$accent-orange: #e24f21;
+
+$color-avalanche: #e84142;
+$color-ethereum: #497493;
+$color-xdai: #48a9a6;
+
+$discord: #7289da;
+$facebook: #1276ff;
+$linkedin: #0078b9;
+$telegram: #0088cc;
+$twitter: #00a1f4;
+
+// TODO: These are too specific and should ideally be generalized
+$recent-jobs-nav-list-border: #c6d4e8;
+
+
+// Sizes
+$content-max-width: 1366px;
+
+// Break Points For Media Queries
+$bp-1950: 121.875em;
+$bp-1900: 118.75em;
+$bp-1850: 115.625em;
+$bp-1800: 112.5em;
+$bp-1750: 109.375em;
+$bp-1700: 106.25em;
+$bp-1650: 103.125em;
+$bp-1600: 100em;
+$bp-1550: 96.875em;
+$bp-1500: 93.25em;
+$bp-1450: 90.625em;
+$desktop: 1440px;
+$bp-1400: 87.5em;
+$bp-1350: 84.375em;
+$bp-1300: 81.25em;
+$bp-1250: 78.125em;
+$bp-1200: 75em;
+$bp-1150: 71.875em;
+$bp-1100: 68.75em;
+$bp-1050: 65.625em;
+$laptop: 1024px;
+$bp-1000: 62.5em;
+$bp-950: 59.375em;
+$bp-900: 56.25em;
+$bp-850: 53.125em;
+$bp-800: 50em;
+$tablet: 768px;
+$bp-750: 46.875em;
+$bp-700: 43.75em;
+$bp-650: 40.625em;
+$bp-600: 37.5em;
+$bp-550: 34.375em;
+$bp-500: 31.25em;
+$bp-450: 28.125em;
+$bp-400: 25em;
+$bp-350: 21.875em;
+$bp-300: 18.75em;

@@ -1,0 +1,19 @@
+{{ define "hero" }}
+<div class="hero">
+  <p>Autonomous Blog</p>
+  <h1>A collection of stories, articles, updates<br/>From Autonomous Boss</h1>
+</div>
+{{ end }}
+
+{{ define "search" }}&nbsp;{{ end }}
+
+{{ define "main" }}
+<section class="blog">
+  <div class="blog-wrap">
+    {{ $posts := where .Site.RegularPages "Type" "in" (slice "blog") }}
+    {{ range $posts }}
+      {{ partial "blog/placard" . }}
+    {{ end }}
+  </div>
+</section>
+{{end}}

@@ -1,0 +1,27 @@
+<html>
+{{- $css := resources.Get "scss/style.scss" | resources.ToCSS | minify | fingerprint }}
+{{- $js := slice (resources.Get "/js/script.js") (resources.Get "/vendor/fuse/fuse.js") (resources.Get "/js/search.js") | resources.Concat "js/scripts.js" | minify | fingerprint }}
+<!--{{- $sri := $js | fingerprint }}-->
+<head>
+<title>{{ .Site.Title }}{{if and (not .IsHome) (.Title)}} - {{.Title}} {{end}}</title>
+<link rel="icon" href="/images/favicon.svg">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Autonomous Boss - Human Resources for Autonomous Organizations">
+<link rel="stylesheet" href="{{ $css.Permalink }}" />
+<script async defer type="text/javascript" src="{{ $js.Permalink }}"></script>
+<script async defer data-domain="autonomousboss.io" src="https://plausible.io/js/plausible.js"></script>
+{{- block "meta" . }}{{- end }}
+{{- block "extra-scripts" . }}
+{{- end }}
+</head>
+<body>
+{{ partial "nav" . -}}
+{{- block "hero" . }}{{ partial "hero-1" .}} {{- end -}}
+{{- block "search" . }}{{ partial "search" .}} {{- end -}}
+{{- block "main" . }}{{- end -}}
+{{- block "footer" . }}{{ partial "footer" .}} {{- end -}}
+{{- block "submission-modal" . }}{{ partial "submission-modal" .}} {{- end -}}
+</body>
+</html>
