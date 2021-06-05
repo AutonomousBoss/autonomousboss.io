@@ -1,0 +1,78 @@
+{{ define "main" }}
+<main class="main">
+  <div class="orgs datatable">
+    <h1>Autonomous Groups</h1>
+    <div class="datatable-header">
+      <ul class="datatable-header-left">
+        <li class="active">All</li>
+        <li>For Profit</li>
+        <li>For a Goal</li>
+        <li>Protocols</li>
+      </ul>
+      <div class="datatable-header-right">
+        <div>
+          <label for="sort">Sort:</label>
+          <select id="sort">
+            <option value="">By recent</option>
+            <option value="">By Type</option>
+            <option value="">By Filter</option>
+          </select>
+        </div>
+        <div class="view-type">
+          <p>View:</p>
+          <div>
+            <button class="btn-layout btn-list"><img src="/images/icons/list.svg" alt="list view"></button>
+            <button class="btn-layout btn-grid active"><img src="/images/icons/grid.svg" alt="grid view"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="datatable-body">
+      {{ range $.Site.Data.cms.orgs }}
+        {{ partial "orgs/placard" . }}
+      {{ end }}
+    </div>
+  </div>
+  <div class="sidebar">
+    <div class="filter">
+      <h2>Filters</h2>
+      <div class="filter-item">
+        <p class="filter-item-name">Networks</p>
+        <div class="filter-item-network">
+          <button class="blue">Ethereum</button>
+          <button class="orange">xDAI</button>
+          <button class="blue">Ethereum</button>
+          <button class="orange">xDAI</button>
+          <button class="blue">Ethereum</button>
+        </div>
+      </div>
+      <div class="filter-item">
+        <p class="filter-item-name">Industries</p>
+        <div class="filter-item-field">
+          {{ range $.Site.Data.cms.fields }}
+            <button>{{ . | title }}</button>
+          {{ end }}
+        </div>
+      </div>
+      <div class="filter-item">
+        <p class="filter-item-name">Size</p>
+        <div class="filter-item-field">
+          <button>0-99</button>
+          <button>100-999</button>
+          <button>1000+</button>
+        </div>
+      </div>
+      <div class="filter-item">
+        <p class="filter-item-name">Platforms</p>
+        <div class="filter-item-field">
+          <button>Aragon</button>
+          <button>Independent</button>
+          <button>Colony</button>
+          <button>Uniswap</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{{end}}

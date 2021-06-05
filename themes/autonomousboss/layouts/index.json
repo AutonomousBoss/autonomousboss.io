@@ -1,0 +1,11 @@
+{{- $.Scratch.Add "index" slice -}}
+{{- range .Site.RegularPages -}}
+{{- $.Scratch.Add "index" (dict "type" "page" "title" .Title "author" .Params.author "date" .Date "tags" .Params.tags "categories" .Params.categories "contents" .Plain "permalink" .Permalink) -}}
+{{- end -}}
+{{- range $.Site.Data.cms.jobs -}}
+{{- $.Scratch.Add "index" (dict "type" "org" "title" .title "organization" .organization.name "source_url" .sourceURL "summary" .summary) -}}
+{{- end -}}
+{{- range $.Site.Data.cms.orgs -}}
+{{- $.Scratch.Add "index" (dict "type" "job" "title" .title "name" .name "networks" .networks "platform" .platform "industries" .industries "homepageURL" .homepageURL) -}}
+{{- end -}}
+{{- $.Scratch.Get "index" | jsonify -}}

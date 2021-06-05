@@ -1,0 +1,10 @@
+{{ define "main" }}
+<main class="main">
+  {{ range $.Site.Data.jobs }}
+  {{ if ne .closedData "" }}
+  {{ partial "jobs/placard" . }}
+  {{ end }}
+  {{ end }}
+</main>
+{{end}}
+w

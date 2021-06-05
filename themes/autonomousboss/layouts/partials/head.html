@@ -1,0 +1,14 @@
+{{- $css := resources.Get "scss/style.scss" | resources.ToCSS | minify | fingerprint -}}
+{{- $js := slice (resources.Get "/js/script.js") (resources.Get "/vendor/fuse/fuse.js") (resources.Get "/js/search.js") | resources.Concat "js/scripts.js" | minify | fingerprint -}}
+<!--{{- $sri := $js | fingerprint -}}-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="{{ .Site.Title }} - {{ or .Description .Summary}}" name="description">
+    <link rel="icon" href="/images/favicon.svg">
+    <title>{{ .Site.Title }}{{if and (not .IsHome) (.Title)}} - {{.Title}} {{end}}</title>
+    <link rel="stylesheet" href="{{ $css.Permalink }}" />
+    <script async defer type="text/javascript" src="{{ $js.Permalink }}"></script>
+    <script async defer data-domain="autonomousboss" src="https://plausible.io/js/plausible.js"></script>
+</head>

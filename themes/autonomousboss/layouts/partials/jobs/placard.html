@@ -1,0 +1,37 @@
+{{- $sourceURLRaw := index . "sourceURL" -}}
+{{- $sourceURL := urls.Parse $sourceURLRaw -}}
+{{- $org := index . "organization" -}}
+
+<div class="datatable-placard job-listing" style="position:relative;">
+  <div class="job-listing-name">
+    <div>
+      {{ partial "orgs/avatar.html" $org }}
+      <div>
+        <a href="{{ $sourceURLRaw }}" target="_blank" class="title"><h2>{{ .title | title }}</h2> {{ partial "jobs/field_icon" .field }}</a>
+        <p><a href="/organizations/{{ $org.slug }}">{{ $org.name | title }}</a> | <a href="{{ $sourceURLRaw }}" target="_blank">{{ $sourceURL.Host }}</a></p>
+      </div>
+    </div>
+  </div>
+  <p class="job-listing-text">{{ .summary | truncate 160 }}</p>
+  <hr>
+  <div class="job-listing-detail">
+    <div>
+      <img src="/images/icons/location.svg" alt="">
+      <p>
+        <span>Location</span>
+        {{- $loc := (index . "location") | lower -}}
+        {{- if eq $loc "" -}}
+          {{- $loc = "worldwide" -}}
+        {{- end -}}
+        <span>{{ $loc | title }}{{if eq $loc "worldwide" }} <i class="fa fa-globe-americas"></i>{{end}}</span>
+      </p>
+    </div>
+    <div>
+      <img src="/images/icons/calendar.svg" alt="">
+      <p>
+        <span>Date posted</span>
+        <span>{{ index . "postedDate" }}</span>
+      </p>
+    </div>
+  </div>
+</div>

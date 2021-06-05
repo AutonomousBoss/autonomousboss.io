@@ -1,0 +1,15 @@
+{{ define "main" }}
+<main class="main">
+  {{ .Data.Singular }}
+  {{ .Data.Plural }}
+  {{ .Data.Terms }}
+  {{ range .Data.Terms }}
+  {{ . }}
+  {{ end }}
+  <ul>
+    {{ range .Data.Terms.Alphabetical }}
+    <li><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a> {{ .Count }}</li>
+    {{ end }}
+  </ul>
+</main>
+{{end}}

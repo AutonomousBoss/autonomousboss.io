@@ -1,0 +1,23 @@
+<html>
+    {{partial "head" .}}
+    <body>
+      {{ partial "nav" .}}
+
+      {{- block "hero" . }}
+        {{ partial "hero-1" .}}
+      {{- end }}
+
+      {{- block "search" . }}
+        {{ partial "search" .}}
+      {{- end }}
+
+      {{- block "main" . }}{{- end }}
+      {{- block "footer" . }}
+        {{ partial "footer" .}}
+      {{- end }}
+
+      {{- block "submission-modal" . }}
+        {{ partial "submission-modal" .}}
+      {{- end }}
+    </body>
+</html>

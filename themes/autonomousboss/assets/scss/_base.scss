@@ -1,0 +1,72 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+a,
+input,
+input::placeholder,
+button {
+  color: $text-dark;
+  font-family: $font;
+  font-weight: 400;
+}
+
+body {
+  font-weight: 400;
+  overflow-x: hidden;
+  @include margin-center;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  transition: scroll-behavior .3s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+button {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+input {
+  border: 0;
+  outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font;
+}
+
+img {
+  object-fit: contain;
+  width: 100%;
+}
+

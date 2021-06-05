@@ -1,0 +1,98 @@
+{{ define "main" }}
+<main class="main">
+  <div class="recent datatable">
+    <h1>Autonomous Jobs</h1>
+    <div class="datatable-header">
+      <ul class="datatable-header-left">
+        <li class="active">Recent <i class="fa fa-clock"></i></li>
+        <li class="">Featured <img src="/images/icons/medal.svg" alt="featured job listing" /></li>
+        <li>Protocols <i class="fa fa-layer-group"></i></li>
+      </ul>
+      <div class="datatable-header-right">
+        <div>
+          <label for="sort">Sort:</label>
+          <select id="sort">
+            <option value="">By recent</option>
+            <option value="">By Type</option>
+            <option value="">By Filter</option>
+          </select>
+        </div>
+        <div class="view-type">
+          <p>View:</p>
+          <div>
+            <button class="btn-layout btn-list"><img src="/images/icons/list.svg" alt="list view"></button>
+            <button class="btn-layout btn-grid active"><img src="/images/icons/grid.svg" alt="grid view"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="datatable-body col-2">
+      {{ range $.Site.Data.cms.jobs }}
+      {{ if ne .closedData "" }}
+      {{ partial "jobs/placard" . }}
+      {{ end }}
+      {{ end }}
+    </div>
+  </div>
+  <div class="sidebar">
+    <section class="filters">
+      <h2>Filters</h2>
+      <div class="filter-item">
+        <p class="filter-item-name">Networks</p>
+        <div class="filter-item-network">
+
+          {{ range $.Site.Data.cms.networks }}
+          {{- $lower := . | lower -}}
+          <a href="/networks/ethereum"><button class="color-{{ $lower }}"><img src="/images/icons/{{ $lower}}-white.svg">{{ . | title }}</button></a>
+          {{ end }}
+        </div>
+      </div>
+      <div class="filter-item">
+        <p class="filter-item-name">Fields</p>
+        <div class="filter-item-field">
+          {{ range $.Site.Data.cms.fields }}
+          <button>{{ partial "jobs/field_icon" . }}{{ . | title }}</button>
+          {{ end }}
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="title">
+        <h2>Recent Articles</h2>
+        <a href="/blog">View all</a>
+      </div>
+      <ul>
+        <li><a href="#"><img src="/images/logos/networks/ethereum.svg" alt="ethereum job listing">Ethereum</a></li>
+        <li><a href="#"><img src="/images/logos/networks/avalanche.png" alt="avalanche job listing">Avalanche</a></li>
+      </ul>
+    </section>
+    <section>
+      <div class="title">
+        <h2>Organizations</h2>
+        <a href="/organizations">View all</a>
+      </div>
+      <ul>
+        <li><a href="#"><img src="/images/logos/networks/ethereum.svg" alt="ethereum job listing">Ethereum</a></li>
+        <li><a href="#"><img src="/images/logos/networks/avalanche.png" alt="avalanche job listing">Avalanche</a></li>
+        <li><a href="#"><img src="/images/logos/networks/binance.png" alt="binance job listing">Binance</a></li>
+        <li><a href="#"><img src="/images/logos/networks/avalanche.png" alt="avalanche job listing">Avalanche</a></li>
+        <li><a href="#"><img src="/images/logos/networks/ethereum.svg" alt="ethereum job listing">Ethereum</a></li>
+      </ul>
+    </section>
+    <section>
+      <div class="title">
+        <h2>Platforms</h2>
+        <a href="/platforms">View all</a>
+      </div>
+      <ul>
+        <li><a href="#"><img src="/images/logos/networks/ethereum.svg" alt="ethereum job listing">Ethereum</a></li>
+        <li><a href="#"><img src="/images/logos/networks/avalanche.png" alt="avalanche job listing">Avalanche</a></li>
+        <li><a href="#"><img src="/images/logos/networks/binance.png" alt="binance job listing">Binance</a></li>
+        <li><a href="#"><img src="/images/logos/networks/avalanche.png" alt="avalanche job listing">Avalanche</a></li>
+        <li><a href="#"><img src="/images/logos/networks/ethereum.svg" alt="ethereum job listing">Ethereum</a></li>
+      </ul>
+    </section>
+  </div>
+</main>
+{{end}}

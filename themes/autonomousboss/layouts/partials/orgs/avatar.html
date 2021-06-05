@@ -1,0 +1,11 @@
+{{- if (fileExists (printf "static/images/logos/orgs/%s.jpg" .slug )) -}}
+<img src="{{ printf "/images/logos/orgs/%s.jpg" .slug  }}" alt="{{ .name }} logo" />
+{{- else if (fileExists (printf "static/images/logos/orgs/%s.svg" .slug )) -}}
+<img src="{{ printf "/images/logos/orgs/%s.svg" .slug  }}" alt="{{ .name }} logo" />
+{{- else if (fileExists (printf "static/images/logos/orgs/%s.png" .slug )) -}}
+<img src="{{ printf "/images/logos/orgs/%s.png" .slug  }}" alt="{{ .name }} logo" />
+{{- else if (fileExists (printf "static/images/logos/orgs/%s.webp" .slug )) -}}
+<img src="{{ printf "/images/logos/orgs/%s.webp" .slug  }}" alt="{{ .name }} logo" />
+{{- else -}}
+<img src="/images/icons/orgs/ethereum.svg" alt="default organization logo for {{ .name }}">
+{{- end -}}

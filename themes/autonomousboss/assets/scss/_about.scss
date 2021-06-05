@@ -1,0 +1,202 @@
+.about {
+  margin-top: 7.6rem;
+
+  &-wrap {
+    max-width: 1180px;
+    width: 100%;
+    @include margin-center;
+  }
+
+  &-hero {
+    align-items: center;
+    display: grid;
+    grid-gap: 3.4rem;
+    grid-template-columns: 1.25fr 1fr;
+
+    h1 {
+      color: $primary;
+      font-size: 4.7rem;
+      font-weight: 500;
+      letter-spacing: .02em;
+      line-height: 7rem;
+      text-align: left;
+
+      span {
+        color: $secondary;
+        font-weight: bolder;
+      }
+    }
+
+    //img {
+    //  @include img-contain;
+    //}
+    //
+    //&-right, &-left {
+    //  @include wh-100;
+    //}
+  }
+
+  &-team {
+    margin-bottom: 7rem;
+    margin-top: 8.5rem;
+
+    h1 {
+      color: $primary;
+      font-size: 3.2rem;
+      font-weight: bold;
+      letter-spacing: .02em;
+      line-height: 4.3rem;
+      margin-bottom: 3.4rem;
+      text-align: left;
+    }
+
+    &-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+      grid-row-gap: 4.8rem;
+      grid-column-gap: 4rem;
+
+      &-item {
+        width: 100%;
+      }
+
+      img {
+        border-radius: 100%;
+        height: 28rem;
+        width: 28rem;
+        margin-bottom: 1.5rem;
+        overflow: hidden;
+        width: 100%;
+        //@include img-cover;
+        object-fit: cover;
+
+        //img {
+        //  @include img-cover;
+        //}
+      }
+
+      h2 {
+        color: $primary;
+        font-size: 1.8rem;
+        font-weight: bold;
+        letter-spacing: 0.02em;
+        margin-bottom: 4px;
+        text-align: left;
+      }
+
+      p {
+        font-weight: 600;
+        font-size: 1.4rem;
+        letter-spacing: 0.02em;
+        line-height: 1.7rem;
+        margin-bottom: 4px;
+        color: rgba($primary, .72);
+
+        img {
+          height: 1.6rem;
+          margin-right: 5px;
+          object-fit: cover;
+          width: 1.6rem;
+        }
+      }
+    }
+  }
+
+  &-faq {
+    background: #f8f9fc;
+    padding: 7rem 0;
+
+    &-wrap {
+      max-width: 1180px;
+      width: 100%;
+      @include margin-center;
+
+      & > h1 {
+        color: $primary;
+        font-size: 3.2rem;
+        font-weight: bold;
+        letter-spacing: .02em;
+        margin-bottom: 4rem;
+      }
+    }
+
+
+    &-box {
+      margin-top: 3.2rem;
+      max-width: 100rem;
+      width: 100%;
+
+      .faq {
+        align-items: center;
+        border-bottom: 1px solid #c6d4e8;
+        color: $primary;
+        //display: block;
+        display: flex;
+        font-size: 2.4rem;
+        font-weight: 400;
+        justify-content: space-between;
+        letter-spacing: 0.02em;
+        line-height: 4.5rem;
+        padding-bottom: 1.4rem;
+        position: relative;
+        text-align: left;
+        width: 100%;
+
+        span {
+          display: flex;
+        }
+
+        i {
+          transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+
+        strong {
+          margin-right: 1rem;
+        }
+
+      }
+
+      .faq-text {
+        max-height: 0px;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        transform: scaleY(0);
+        transition: all .3s linear;
+        transform-origin: top;
+
+        p {
+          color: $dark-grey;
+          font-size: 1.6rem;
+          font-weight: 500;
+          letter-spacing: .02em;
+          line-height: 3.2rem;
+          margin-bottom: 1rem;
+          margin-top: 1.6rem;
+          padding-left: 3.5rem;
+        }
+
+      }
+
+      &:last-of-type .faq {
+        border-bottom: 0;
+      }
+
+      &.active .faq-text {
+        max-height: 20rem;
+        opacity: 1;
+        transform: scaleY(1);
+        visibility: visible;
+      }
+
+      &.active .faq i {
+        transform: rotate(180deg);
+      }
+
+
+    }
+
+  }
+
+}

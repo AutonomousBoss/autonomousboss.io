@@ -1,0 +1,50 @@
+[[main]]
+identifier = "index"
+name = "Jobs"
+url = "/"
+weight = 10
+
+[[main]]
+identifier = "organizations"
+name = "Organizations"
+url = "/organizations/"
+weight = 20
+
+[[main]]
+identifier = "resources"
+name = "Resources"
+url = "/resources/"
+weight = 25
+
+[[main]]
+identifier = "blog"
+name = "Blog"
+url = "/blog/"
+weight = 30
+
+[[main]]
+identifier = "about"
+name = "About Us"
+url = "/about/"
+weight = 40
+
+
+[[social]]
+url = "https://discord.gg/A8tWjHqHz3"
+name = "discord"
+weight = 1
+
+[[social]]
+url = "https://t.me/autonomousboss"
+name = "telegram-plane"
+weight = 2
+
+[[social]]
+url = "https://twitter.com/AutonomousBoss"
+name = "twitter"
+weight = 3
+
+[[social]]
+url = "https://github.com/AutonomousBoss"
+name = "github"
+weight = 4

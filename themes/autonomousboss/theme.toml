@@ -1,0 +1,9 @@
+name = "autonomousboss"
+license = "MIT"
+licenselink = "https://github.com/autonomousboss/autonomousboss.io/blob/master/LICENSE.md"
+homepage = "https://github.com/autonomousboss/autonomousboss.io"
+min_version = "0.41"
+
+[author]
+name = "Autonomous Boss, AC"
+homepage = "https://autonomousboss.io/"

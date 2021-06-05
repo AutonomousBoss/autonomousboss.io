@@ -1,0 +1,33 @@
+scss_files: 'themes/autonomousboss/assets/scss'
+
+linters:
+  HexLength:
+    style: long
+
+  Indentation:
+    severity: error
+    width: 2
+
+  NestingDepth:
+    max_depth: 6
+
+  PropertySpelling:
+    extra_properties: [
+      'gap', 'grid-gap', 'grid-template-columns'
+    ]
+
+  PropertyUnits:
+    enabled: true
+    global: [
+      'em', 'rem',                         # Font-relative lengths
+      'px',                          # Absolute lengths
+      'vh', 'vw', 'vmin', 'vmax',    # Viewport-percentage lengths
+      'fr',                          # Grid fractional lengths
+      'deg', 'grad', 'rad', 'turn',  # Angle
+      'ms', 's',                     # Duration
+      'Hz', 'kHz',                   # Frequency
+      'dpi', 'dpcm', 'dppx',         # Resolution
+      '%']
+
+  StringQuotes:
+    style: double_quotes

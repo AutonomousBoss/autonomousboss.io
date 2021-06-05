@@ -1,0 +1,53 @@
+<div class="datatable-placard orgs-box">
+  <div>
+    <div class="orgs-box-header">
+      <div class="orgs-box-header-name">
+        {{ partial "orgs/avatar.html" . }}
+        <div>
+          <h1><a href="/organizations/{{ .slug }}">{{ .name }}</a></h1>
+          {{- $homepageURL := urls.Parse .homepageURL -}}
+          <a href="{{ .homepageURL }}" target="_blank"><i class="fas fa-globe"></i>{{ $homepageURL.Host }}</a>
+        </div>
+      </div>
+      <div class="blog-detail-author-social">
+        <ul>
+          {{- if ne .twitterURL "" -}}
+          <li><a href="{{ .twitterURL }}" alt="{{.name}} twitter"><i class="fab fa-twitter"></i></a></li>
+          {{- end -}}
+          {{- if ne .discordURL "" -}}
+          <li><a href="{{ .discordURL }}" alt="{{.name}} discord"><i class="fab fa-discord"></i></a></li>
+          {{- end -}}
+          {{- if ne .telegramURL "" -}}
+          <li><a href="{{ .telegramURL }}" alt="{{.name}} telegram"><i class="fab fa-telegram-plane"></i></a></li>
+          {{- end -}}
+          {{- if ne .githubURL "" -}}
+          <li><a href="{{ .githubURL }}" alt="{{.name}} github"><i class="fab fa-github"></i></a></li>
+          {{- end -}}
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <ul class="orgs-box-list">
+      <li>
+        <span>Network</span>
+        <p>{{ range .networks }}{{ . | title }}{{ end }}</p>
+      </li>
+      <li>
+        <span>Industry</span>
+        <p>{{ range .industries }}{{ . | title }}{{ end }}</p>
+      </li>
+      <li>
+        <span>Size</span>
+        <p>{{ .shareholderSize | title }}</p>
+      </li>
+      <li>
+        <span>Platform</span>
+        <p>{{ .platform | title }}</p>
+      </li>
+      <li>
+        <span>Open jobs</span>
+        <p class="text-blue">2 jobs</p>
+      </li>
+    </ul>
+  </div>
+</div>

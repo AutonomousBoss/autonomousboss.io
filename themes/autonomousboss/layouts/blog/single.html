@@ -1,0 +1,106 @@
+{{ define "hero" }}
+<div class="hero">
+  <p>Autonomous Blog</p>
+  <h1>A collection of stories, articles, updates<br/>From Autonomous Boss</h1>
+</div>
+{{ end }}
+{{ define "search" }}&nbsp;{{ end }}
+
+{{ define "main" }}
+<main class="main blog-grid">
+  <div class="blog-detail">
+    <h1 class="blog-detail-heading">{{ .Title }}</h1>
+    {{ partial "blog/metadata" . }}
+
+    <div class="blog-detail-image">
+      {{ if eq .Params.image "" }}
+      <img src="/images/blog/default.png" alt="default blog post image">
+      {{ else }}
+      <img src="/images/blog/{{ .Params.image }}" alt="{{ .Params.image }}">
+      {{ end }}
+    </div>
+
+    <div class="blog-detail-body">
+      {{ .Content }}
+    </div>
+
+    <hr>
+    {{ partial "blog/metadata" . }}
+  </div>
+
+  <div class="blog-side">
+    <div>
+      {{ if .Params.related }}
+      {{ if gt (len .Params.related) 0 }}
+      <h1 class="blod-side-heading">Related posts</h1>
+      <div class="blog-side-post">
+        <ul>
+          {{ range .Params.related }}
+            <li><a href="{{ .url }}" target="_blank">{{ .text }}</a></li>
+          {{ end }}
+        </ul>
+      </div>
+      {{ end }}
+      {{ end }}
+
+      <div class="blog-side-jobs">
+        <div class="blog-side-jobs-header">
+          <h1 class="blod-side-heading">Featured jobs</h1>
+          <button>
+            <img src="/images/icons/diamond.svg">
+          </button>
+        </div>
+
+        <div class="blog-side-jobs-post">
+          <img src="/images/icons/ethereum.svg">
+          <h1>Crypto Copywriter <small>Merlin Lab | cryptojobslist.com </small></h1>
+        </div>
+
+        <div class="blog-side-jobs-post">
+          <img src="/images/icons/ethereum.svg">
+          <h1>Crypto Copywriter <small>Merlin Lab | cryptojobslist.com </small></h1>
+        </div>
+
+        <div class="blog-side-jobs-post">
+          <img src="/images/icons/ethereum.svg">
+          <h1>Crypto Copywriter <small>Merlin Lab | cryptojobslist.com </small></h1>
+        </div>
+
+        <div class="blog-side-jobs-post">
+          <img src="/images/icons/ethereum.svg">
+          <h1>Crypto Copywriter <small>Merlin Lab | cryptojobslist.com </small></h1>
+        </div>
+      </div>
+
+      <div class="blog-side-jobs">
+        <div class="blog-side-jobs-header">
+          <h1 class="blod-side-heading">Featured jobs</h1>
+          <button>
+            <img src="/images/icons/diamond.svg">
+          </button>
+        </div>
+
+        <div class="blog-side-jobs-post">
+          <img src="/images/icons/ethereum.svg">
+          <h1>Crypto Copywriter <small>Merlin Lab | cryptojobslist.com </small></h1>
+        </div>
+
+        <div class="blog-side-jobs-post">
+          <img src="/images/icons/ethereum.svg">
+          <h1>Crypto Copywriter <small>Merlin Lab | cryptojobslist.com </small></h1>
+        </div>
+
+        <div class="blog-side-jobs-post">
+          <img src="/images/icons/ethereum.svg">
+          <h1>Crypto Copywriter <small>Merlin Lab | cryptojobslist.com </small></h1>
+        </div>
+
+        <div class="blog-side-jobs-post">
+          <img src="/images/icons/ethereum.svg">
+          <h1>Crypto Copywriter <small>Merlin Lab | cryptojobslist.com </small></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{{ end }}

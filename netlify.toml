@@ -1,0 +1,15 @@
+[build]
+publish = "public"
+command = """
+source /opt/buildhome/python3.8/bin/activate
+make build-deps
+make listings
+make site
+"""
+
+[[headers]]
+for = "/*"
+[headers.values]
+cache-control = "max-age=10800"
+X-Frame-Options = "DENY"
+X-XSS-Protection = "1; mode=block"

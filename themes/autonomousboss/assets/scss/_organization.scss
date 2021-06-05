@@ -1,0 +1,315 @@
+.orgs {
+  &-heading {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2.4rem;
+
+    h1 {
+      color: $primary;
+      font-size: 2.4rem;
+      font-weight: bold;
+      letter-spacing: .03em;
+      line-height: 4.3rem;
+    }
+
+    div {
+      align-items: center;
+      display: flex;
+
+      p {
+        color: $primary;
+        font-size: 2rem;
+        font-weight: 600;
+        letter-spacing: .03em;
+        margin-right: 1.6rem;
+        text-align: left;
+      }
+
+      select {
+        border: 1px solid #c6d4e8;
+        border-radius: 4px;
+        color: $dark-grey;
+        font-size: 1.4rem;
+        font-weight: 500;
+        height: 3.2rem;
+        letter-spacing: .02em;
+        outline: none;
+        width: 10.51rem;
+      }
+    }
+  }
+
+  &-box {
+    border: 1px solid #c6d4e8;
+    border-radius: 8px;
+    min-height: 17rem;
+    padding: 2.4rem;
+    width: 100%;
+
+    &:not(:last-child) {
+      margin-bottom: 2.45rem;
+    }
+
+    &-header {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+
+      h1 {
+        margin-bottom: 0;
+      }
+
+      &-name {
+        display: grid;
+        grid-gap: .8rem;
+        grid-template-columns: min-content 1fr;
+
+        img {
+          height: 4.4rem;
+          object-fit: contain;
+          width: 4.4rem;
+        }
+
+        div {
+          letter-spacing: .03em;
+          text-align: left;
+
+          h1 a {
+            color: $secondary;
+            font-size: 2rem;
+            font-weight: bold;
+          }
+
+          a {
+            align-items: center;
+            color: $text-light;
+            display: flex;
+            font-size: 1.4rem;
+            font-weight: 500;
+            letter-spacing: .02em;
+          }
+
+          a i {
+            color: $text-light;
+            font-size: 1.4rem;
+            margin-right: .3rem;
+          }
+        }
+      }
+    }
+
+    hr {
+      background: #c6d4e8;
+      border: 0;
+      border-radius: 5px;
+      height: 1px;
+      margin-bottom: 1.5rem;
+      margin-top: 2rem;
+      width: 100%;
+    }
+
+    &-list {
+      align-items: flex-start;
+      display: flex;
+      justify-content: center;
+
+      li {
+        display: inline-block;
+        padding: 0 3.7rem;
+
+        &:not(:last-child) {
+          border-right: 1px solid #c6d4e8;
+        }
+
+        span,
+        p {
+          display: block;
+          font-size: 14px;
+          letter-spacing: .02em;
+          text-align: left;
+        }
+
+        span {
+          color: $text-light;
+          font-weight: 500;
+          margin-bottom: 2px;
+        }
+
+        p {
+          color: $text-dark;
+          font-weight: 600;
+
+          &.text-blue {
+            color: $secondary;
+          }
+        }
+      }
+    }
+
+    &.active {
+      border-color: $secondary;
+      box-shadow: 9px 8px 14px rgba(3, 52, 119, .08);
+    }
+  }
+}
+
+.hero.organization {
+  background: url("/images/organization-view.png");
+  background-position: 100% 62%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 19rem;
+  padding: 0;
+  position: relative;
+}
+
+.tesla-logo {
+  @include flex-row-center;
+  background: $white;
+  border-radius: 11px;
+  box-shadow: 0 3px 14px rgba(3, 52, 119, .1);
+  height: 11.6rem;
+  left: 11.7rem;
+  position: absolute;
+  top: 100%;
+  transform: translateY(-50%);
+  width: 11.6rem;
+
+  img {
+    height: 8.2rem;
+    object-fit: contain;
+    width: 8.2rem;
+  }
+}
+
+.tesla {
+  margin-bottom: 4rem;
+  margin-top: 10rem;
+  padding-right: 4.4rem;
+
+  &-org {
+    color: $text-light;
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: .03em;
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+
+  .blog-detail-author {
+    align-items: center;
+    margin-bottom: 2.4rem;
+
+    &-social {
+      p {font-weight: normal; text-transform: capitalize;}
+    }
+  }
+
+  .blog-detail-author-name {
+    h1 {
+      font-size: 3.2rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &-text {
+    p {
+      color: $dark-grey;
+      font-size: 1.6rem;
+      font-weight: 500;
+      letter-spacing: .02em;
+      line-height: 2.8rem;
+      text-align: left;
+    }
+
+    &-img {
+      border-radius: 7px;
+      height: 34rem;
+      margin-bottom: 3.4rem;
+      margin-top: 2.4rem;
+      overflow: hidden;
+      width: 100%;
+
+      img {
+        @include img-cover;
+      }
+    }
+  }
+
+  // ------  [TESLA PAGE SIDEBAR]  ------
+  &-sidebar {
+    border-left: 1px solid #c6d4e8;
+    margin-top: 4.5rem;
+    padding-left: 2.4rem;
+    padding-top: 3.7rem;
+  }
+
+  &-open {
+    border: 1px solid #c6d4e8;
+    border-radius: 6px;
+    padding: 1.6rem;
+    padding-bottom: 3rem;
+
+    &:not(:last-child) {
+      margin-bottom: 2.4rem;
+    }
+
+    & > h1 {
+      color: $primary;
+      font-size: 2.4rem;
+      font-weight: bold;
+      letter-spacing: .03em;
+      margin-bottom: 2.8rem;
+    }
+
+    &-item {
+      display: grid;
+      grid-template-columns: min-content 1fr;
+      grid-gap: .8rem;
+
+      &:not(:last-child) {
+        margin-bottom: 2rem;
+      }
+
+      img {
+        height: 4.4rem;
+        width: 4.4rem;
+      }
+
+      &-name {
+        & > h1 {
+          color: $secondary;
+          font-size: 1.8rem;
+          font-weight: bold;
+          letter-spacing: .02em;
+          margin-bottom: 4px;
+        }
+
+        & > p {
+          color: $text-light;
+          font-size: 1.4rem;
+          font-weight: 500;
+          letter-spacing: .02em;
+        }
+
+        & > div {
+          button {
+            background: $light-grey;
+            border-radius: 4px;
+            color: $primary;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: .4rem;
+            padding: .4rem 1.8rem;
+            text-align: left;
+
+            &:not(:last-child) {
+              margin-right: 1.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
