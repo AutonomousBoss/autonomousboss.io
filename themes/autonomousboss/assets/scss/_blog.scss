@@ -15,7 +15,6 @@
     border: 1px solid transparent;
     border-radius: 6px;
     overflow: hidden;
-    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
 
     &-image {
       height: 18.2rem;
@@ -97,7 +96,6 @@
         border-radius: 4px;
         height: 3.2rem;
         overflow: hidden;
-        transition: all .2s linear;
         width: 12.2rem;
 
         a {
