@@ -9,20 +9,18 @@
       <div class="list">
         <p class="heading">Pages</p>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="organization.html">Organization</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="about.html">About us</a></li>
+          {{ range .Site.Menus.main }}
+          <li><a href="{{.URL | absURL}}">{{ .Name }}</a></li>
+          {{end}}
         </ul>
       </div>
 
       <div class="social">
         <p class="heading">Follow us</p>
         <ul>
-          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-          <li><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
-          <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-          <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+          {{ range .Site.Menus.social }}
+          <li><a href="{{.URL }}" target=”_blank”><i class="fab fa-{{.Name}}"></i></a></li>
+          {{end}}
         </ul>
       </div>
     </div>
