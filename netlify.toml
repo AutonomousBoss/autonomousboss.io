@@ -4,7 +4,7 @@ command = """
 yarn install
 mkdir -p ./data
 node scripts/import.js
-hugo
+hugo -e production
 """
 
 [[headers]]
