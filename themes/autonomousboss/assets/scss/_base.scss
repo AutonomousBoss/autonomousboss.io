@@ -13,11 +13,11 @@ input::placeholder,
 button {
   color: $text-dark;
   font-family: $font;
-  font-weight: 400;
+  font-weight: normal;
 }
 
 body {
-  font-weight: 400;
+  font-weight: normal;
   overflow-x: hidden;
   @include margin-center;
 }
