@@ -37,8 +37,6 @@ function loadIndex() {
 }
 
 // Now rig up the UI to use the search index
-const keyESC = 27;
-
 (function () {
   var resultsUL = document.getElementById('searchResults');
   var searchInput = document.getElementById('search');
@@ -50,12 +48,6 @@ const keyESC = 27;
 
   var searchVisible = false;
   var resultsAvailable = false;
-
-  function stopPropagation(e) {
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-    return false;
-  }
 
   function handleResults(results) {
     if (results.length === 0) {
@@ -85,6 +77,11 @@ const keyESC = 27;
     handleResults(fuse.search(term));
   }
 
+  function stopPropagation(e) {
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    return false;
+  }
   resultsUL.addEventListener('click', stopPropagation);
   searchInput.addEventListener('click', stopPropagation);
   document.addEventListener('click', function () {

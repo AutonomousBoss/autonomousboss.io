@@ -1,3 +1,10 @@
+const keyESC = 27;
+
+function stopPropagation(e) {
+  e.stopPropagation();
+  e.stopImmediatePropagation();
+  return false;
+}
 
 // Nav
 const btnNav = document.querySelector(".btn-nav");
@@ -14,15 +21,32 @@ btnNav.addEventListener("click", () => {
 // Submission modal
 const btnPopup = document.querySelector(".submit-job");
 const popupTarget = document.querySelector(".postPopup");
+const popupBody = document.querySelector(".postPopup-wrap");
 const closePopup = document.querySelector(".popup-cross");
-btnPopup.addEventListener("click", () => {
-  popupTarget.classList.add("show");
-})
-
+btnPopup.addEventListener("click", (e) => {
+  popupTarget.classList.toggle("show");
+  stopPropagation(e);
+});
 closePopup.addEventListener("click", () => {
   popupTarget.classList.remove("show");
-})
+  stopPropagation(e);
+});
 
+popupBody.addEventListener('click', stopPropagation);
+popupTarget.addEventListener('click', function () {
+  popupTarget.classList.remove("show");
+  stopPropagation(e);
+});
+
+// Close all overlays on ESC
+document.addEventListener('keydown', function (event) {
+  if (event.keyCode === keyESC) {
+    popupTarget.classList.remove("show");
+    navTarget.classList.remove("show");
+    navSocial.classList.remove("show");
+    btnNav.classList.remove("open");
+  }
+});
 
 // Datatables
 const btnGrid = document.querySelector('.btn-grid');
