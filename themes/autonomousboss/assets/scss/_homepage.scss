@@ -203,13 +203,17 @@ input[type="text"]:focus{
   margin-top: -2.7rem;
   padding: 0 2rem;
 
-  form {
+  .wrap {
     @include margin-center;
+    max-width: 75.8rem;
+  }
+
+  form {
     background: $white;
     border-radius: 5px;
     box-shadow: 7px 6px 5px rgba(20, 22, 58, .06);
     height: 5.4rem;
-    max-width: 75.8rem;
+    //max-width: 75.8rem;
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -244,31 +248,50 @@ input[type="text"]:focus{
   }
 
   .results {
-    padding-top: 20px;
+    //padding-top: 20px;
     position: relative;
   }
 
   .results ul {
     background: $white;
-    border: 1px solid $dark-grey-2;
     border-radius: 5px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border: 1px solid $recent-jobs-nav-list-border;
+    border-top: 0;
     position: absolute;
-    left: 25%;
-    width: 50%;
+    width: 100%;
     z-index: 1000;
   }
 
-  .results ul.empty {
+  .results ul.hide {
     border: 0;
+    display: none;
   }
 
   .results ul li {
-    border-bottom: 1px solid $dark-grey;
-    padding: 12px;
+    border: 0;
+    border-top: 1px solid $recent-jobs-nav-list-border;
+    //padding: 12px;
 
     &:last-child {
-      border: 0;
+      //border-bottom: 1px solid $dark-grey;
     }
+
+    > div:focus {
+      background: $accent-light-blue-2;
+    }
+  }
+
+  .job-listing {
+    border-radius: 0;
+    border: 0;
+    //border-top: 1px solid $dark-grey;
+
+    //&:last-child {
+    //  border-bottom: 1px solid $dark-grey;
+    //}
+
 
     &:hover {
       background: $accent-light-blue-2;

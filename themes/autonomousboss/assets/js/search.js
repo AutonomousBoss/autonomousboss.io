@@ -1,14 +1,6 @@
-var fuse; // holds our search engine
-var searchVisible = false;
-var list = document.getElementById('searchResults'); // targets the <ul>
-var first = list.firstChild; // first child of search list
-var last = list.lastChild; // last child of search list
-var maininput = document.getElementById('search'); // input box for search
-var resultsAvailable = false; // Did we get any search results?
-
-document.getElementById("search").onkeyup = function (e) {
-  executeSearch(this.value);
-}
+// Start loading the index immediately
+var fuse;
+var templates = {};
 
 function fetchJSONFile(path, callback) {
   var httpRequest = new XMLHttpRequest();
@@ -25,15 +17,11 @@ function fetchJSONFile(path, callback) {
   httpRequest.send();
 }
 
-
-// ==========================================
-// load our search index, only executed once
-// on first call of search box (CMD-/)
-//
-function loadSearch() {
+function loadIndex() {
   fetchJSONFile('/index.json', function (data) {
+    templates = data.templates;
 
-    var options = { // fuse.js options; check fuse.js website for details
+    fuse = new Fuse(data.search, {
       shouldSort: true,
       location: 0,
       distance: 100,
@@ -44,38 +32,79 @@ function loadSearch() {
         'permalink',
         'summary'
       ]
-    };
-    fuse = new Fuse(data, options); // build the index from the json file
+    });
   });
 }
 
-loadSearch();
+// Now rig up the UI to use the search index
+const keyESC = 27;
 
-function executeSearch(term) {
-  let results = fuse.search(term); // the actual query being run using fuse.js
-  let searchitems = ''; // our results bucket
-
-  if (results.length === 0) { // no results based on what was typed into the input box
-    list.innerHTML = "";
-    list.classList.add("empty");
-    return
+(function () {
+  var resultsUL = document.getElementById('searchResults');
+  var searchInput = document.getElementById('search');
+  if (!resultsUL || !searchInput) {
+    return;
   }
-  list.classList.remove("empty");
-  // build our html
-  for (let index in results.slice(0, 5)) { // only show first 5 results
-    var item = results[index].item;
 
-    if (item.type === "job") {
-      searchitems += '<li><a href="' + item.source_url + '" tabindex="0">' + '<span class="title">' + item.title + '</span><br /> <span class="sc">' + item.organization + '</span>' + ' — <em>' + item.summary + '</em></a></li>';
-    } else if (item.type === "org") {
-      searchitems += '<li><a href="' + item.source_url + '" tabindex="0">' + '<span class="title">' + item.title + '</span><br /> <span class="sc">' + item.organization + '</span>' + ' — <em>' + item.summary + '</em></a></li>';
-    } else if (item.type === "page") {
-      searchitems += '<li><a href="' + item.permalink + '" tabindex="0">' + '<span class="title">' + item.title + '</span><br /> <span class="sc">By ' + item.author + '</span>' + ' on <em>' + item.date + '</em></a></li>';
+  loadIndex();
+
+  var searchVisible = false;
+  var resultsAvailable = false;
+
+  function stopPropagation(e) {
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    return false;
+  }
+
+  function handleResults(results) {
+    if (results.length === 0) {
+      resultsUL.classList.add("hide");
+      searchVisible = false;
+      resultsAvailable = false;
+      resultsUL.innerHTML = "";
+      return
     }
+
+    var resultsFragments = [];
+    for (let index in results.slice(0, 5)) {
+      var item = results[index].item;
+      var html = (templates[item.type] || {})[item.slug];
+      if (html) {
+        resultsFragments.push("<li tabindex='" + resultsFragments.length + "'>" + html + "</li>");
+      }
+    }
+
+    resultsUL.innerHTML = resultsFragments.join("");
+    resultsAvailable = true;
+    searchVisible = true;
+    resultsUL.classList.remove("hide");
   }
 
-  list.innerHTML = searchitems;
+  function executeSearch(term) {
+    handleResults(fuse.search(term));
+  }
 
-  // first = list.firstChild.firstElementChild; // first result container — used for checking against keyboard up/down location
-  // last = list.lastChild.firstElementChild; // last result container — used for checking against keyboard up/down location
-}
+  resultsUL.addEventListener('click', stopPropagation);
+  searchInput.addEventListener('click', stopPropagation);
+  document.addEventListener('click', function () {
+    resultsUL.classList.add("hide");
+  });
+
+  document.addEventListener('keydown', function (event) {
+    // Allow ESC (27) to close search box
+    if (searchVisible && event.keyCode === keyESC) {
+        searchVisible = false
+        document.activeElement.blur();
+        resultsUL.classList.add("hide");
+    }
+  });
+
+  searchInput.addEventListener('keyup', function (e) {
+    executeSearch(this.value);
+  });
+
+  searchInput.addEventListener('focus', function (e) {
+    executeSearch(this.value);
+  });
+})();

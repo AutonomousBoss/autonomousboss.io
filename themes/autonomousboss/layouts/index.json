@@ -1,11 +1,22 @@
 {{- $.Scratch.Add "index" slice -}}
-{{- range .Site.RegularPages -}}
-{{- $.Scratch.Add "index" (dict "type" "page" "title" .Title "author" .Params.author "date" .Date "tags" .Params.tags "categories" .Params.categories "contents" .Plain "permalink" .Permalink) -}}
+{{- range $.Site.Data.cms.orgs -}}
+{{- $.Scratch.Add "index" (dict "type" "org" "title" .title "name" .name "networks" .networks "platform" .platform "industries" .industries "homepageURL" .homepageURL) -}}
 {{- end -}}
 {{- range $.Site.Data.cms.jobs -}}
-{{- $.Scratch.Add "index" (dict "type" "org" "title" .title "organization" .organization.name "source_url" .sourceURL "summary" .summary) -}}
+{{- $.Scratch.Add "index" (dict "type" "job" "slug" .slug "title" .title "organization" .organization.name "source_url" .sourceURL "summary" .summary) -}}
 {{- end -}}
-{{- range $.Site.Data.cms.orgs -}}
-{{- $.Scratch.Add "index" (dict "type" "job" "title" .title "name" .name "networks" .networks "platform" .platform "industries" .industries "homepageURL" .homepageURL) -}}
+{{- range (where .Site.RegularPages "Type" "in" (slice "blog")) -}}
+{{- $.Scratch.Add "index" (dict "type" "page" "title" .Title "author" .Params.author "date" .Date "tags" .Params.tags "categories" .Params.categories "contents" .Plain "permalink" .Permalink) -}}
 {{- end -}}
-{{- $.Scratch.Get "index" | jsonify -}}
+{
+  "search": {{- $.Scratch.Get "index" | jsonify -}},
+  "templates": {
+    "job": {
+      {{- $notFirst := false -}}
+      {{- range $i, $job := $.Site.Data.cms.jobs -}}
+      {{- if $notFirst -}},{{- end -}}"{{- .slug -}}": {{- jsonify (partial "jobs/placard" .) -}}
+      {{- $notFirst = true -}}
+      {{- end -}}
+    }
+  }
+}
