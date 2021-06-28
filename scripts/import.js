@@ -52,6 +52,7 @@ const jobDB = {
     experienceLevel: "Experience Level",
     sourceURL: "Source URL",
     summary: "Summary",
+    featured: "Featured",
   }
 };
 
@@ -90,6 +91,10 @@ const processNotionValue = (value) => {
     return value.title[0].text.content;
   }
 
+  if (value.type === "checkbox") {
+    return !!value.checkbox
+  }
+
   // TODO:
   if (value.type === "relation") {
     if (value.relation.length === 0) {
@@ -99,6 +104,7 @@ const processNotionValue = (value) => {
   }
 
   console.log("Fatal: Unknown value type: " + value.type);
+  console.log(value);
   throw new Error("unknown value type");
 };
 
