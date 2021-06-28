@@ -6,7 +6,6 @@ const notion = new Client({ auth: process.env.NOTION_API_TOKEN });
 const orgDBID = process.env.NOTION_ORG_DB_ID;
 const jobDBID = process.env.NOTION_JOB_DB_ID;
 
-
 const outputFile = "./data/cms.json";
 const slugColumn = "Slug";
 const networksColumn = "Networks";
@@ -48,7 +47,7 @@ const jobDB = {
     location: "Location",
     timeCommitment: "Time Commitment",
     postedDate: "Posted Date",
-    clostedDate: "Closed Date",
+    closedDate: "Closed Date",
     duration: "Duration",
     experienceLevel: "Experience Level",
     sourceURL: "Source URL",
