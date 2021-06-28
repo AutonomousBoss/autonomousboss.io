@@ -68,8 +68,8 @@ if (btnGrid) {
   });
 }
 
-function removeGridClasses(){
-  if(btnTarget.classList.contains('col') || btnTarget.classList.contains('col-2')){
+function removeGridClasses() {
+  if (btnTarget.classList.contains('col') || btnTarget.classList.contains('col-2')) {
     btnTarget.classList.remove("col-2");
     btnTarget.classList.remove("col");
   }
@@ -84,7 +84,7 @@ if (btnLayout) {
   });
 }
 
-function removeActive(){
+function removeActive() {
   btnLayout.forEach(el => {
     el.classList.remove("active");
   })
@@ -104,3 +104,58 @@ faqs.forEach(el => {
     el.classList.toggle("active");
   });
 });
+
+// Filters
+var jobs = document.querySelectorAll('*[data-placard="job"]');
+var orgs = document.querySelectorAll('*[data-placard="org"]');
+var shownJobs = jobs.length;
+var shownOrgs = orgs.length;
+
+// var filterTriggers = document.querySelectorAll("[data-filter-org-platform]");
+
+
+
+function handleFilters(placards, triggerSelectors) {
+  triggerSelectors.forEach((triggerSelector) => {
+    triggerSelector.forEach(trigger => {
+      trigger.addEventListener("click", (e) => {
+        var filterKeys = Object.keys(e.target.dataset);
+        console.log(filterKeys);
+
+        if (filterKeys.length === 0) {
+          return;
+        }
+        stopPropagation(e);
+        e.preventDefault();
+
+        var newCount = 0;
+        var filterKey = filterKeys[0];
+        var placardKey = filterKey[6].toLowerCase() + filterKey.slice(7, filterKey.length)
+        placards.forEach((org) => {
+          console.log(placardKey, filterKey);
+          console.log(org.dataset[placardKey],   e.target.dataset);
+          if (org.dataset[placardKey] === e.target.dataset[filterKey]) {
+            org.classList.remove("hide");
+            newCount++;
+          } else {
+            org.classList.add("hide");
+          }
+        });
+
+        shownOrgs = newCount;
+      });
+    });
+  });
+}
+
+handleFilters(jobs, [
+  document.querySelectorAll("[data-filter-job-field]"),
+  document.querySelectorAll("[data-filter-job-networks]"),
+  document.querySelectorAll("[data-filter-job-platform]"),
+]);
+
+handleFilters(orgs, [
+  // document.querySelectorAll("[data-filter-org-networks]"),
+  document.querySelectorAll("[data-filter-org-platform]"),
+]);
+

@@ -3,7 +3,7 @@
   <div class="filter-item-network">
     {{ range . }}
     {{- $lower := . | lower -}}
-    <a href="/networks/ethereum"><button class="color-{{ $lower }}"><img src="/images/icons/{{ $lower}}-white.svg">{{ . | title }}</button></a>
+    <button class="color-{{ $lower }}" data-filter-job-networks="{{ $lower }}" data-filter-org-networks="{{ $lower }}"><img src="/images/icons/{{ $lower}}-white.svg">{{ . | title }}</button>
     {{ end }}
   </div>
 </div>

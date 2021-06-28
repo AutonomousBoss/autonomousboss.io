@@ -4,7 +4,7 @@
     <h1>Autonomous Jobs</h1>
     <div class="datatable-header">
       <ul class="datatable-header-left">
-        <li class="active">Recent <i class="fa fa-clock"></i></li>
+        <li class="active">Recent</li>
         <li class="">Featured <img src="/images/icons/medal.svg" alt="featured job listing" /></li>
         <li>Protocols <i class="fa fa-layer-group"></i></li>
       </ul>
@@ -28,7 +28,7 @@
     </div>
 
     <div class="datatable-body col-2">
-      {{ range $.Site.Data.cms.jobs }}
+      {{ range sort $.Site.Data.cms.jobs "featured" "desc" }}
       {{ if ne .closedData "" }}
       {{ partial "jobs/placard" . }}
       {{ end }}
@@ -43,7 +43,7 @@
         <p class="filter-item-name">Fields</p>
         <div class="filter-item-field">
           {{ range $.Site.Data.cms.fields }}
-          <button>{{ partial "jobs/field_icon" . }}{{ . | title }}</button>
+          <button data-filter-job-field="{{ . }}">{{ partial "jobs/field_icon" . }}{{ . | title }}</button>
           {{ end }}
         </div>
       </div>

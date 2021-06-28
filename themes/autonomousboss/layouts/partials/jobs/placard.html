@@ -2,7 +2,7 @@
 {{- $sourceURL := urls.Parse $sourceURLRaw -}}
 {{- $org := index . "organization" -}}
 
-  <div class="datatable-placard job-listing" style="position:relative;" data-job-params-field="{{ .field }}">
+<div class="datatable-placard job-listing" style="position:relative;" data-placard="job" data-job-featured="{{ .featured }}" data-job-org-type="" data-job-field="{{ .field }}" data-job-posted-date="{{ .postedDate }}" data-job-networks="{{ (index $org.networks 0) | lower }}">
   <div class="job-listing-name">
     <div>
       {{ partial "orgs/avatar.html" $org }}
@@ -11,6 +11,12 @@
         <p><a href="/organizations/{{ $org.slug }}">{{ $org.name | title }}</a> | <a href="{{ $sourceURLRaw }}" target="_blank">{{ $sourceURL.Host }}</a></p>
       </div>
     </div>
+    {{- if .featured -}}
+    <div class="recommend">
+      <img src="/images/icons/diamond.svg">
+      <p>Featured job</p>
+    </div>
+    {{- end -}}
   </div>
   <p class="job-listing-text">{{ .summary | truncate 160 }}</p>
   <hr>
