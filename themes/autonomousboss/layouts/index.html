@@ -29,7 +29,7 @@
 
     <div class="datatable-body col-2">
       {{ range sort $.Site.Data.cms.jobs "featured" "desc" }}
-      {{ if ne .closedData "" }}
+      {{ if ne .closedDate "" }}
       {{ partial "jobs/placard" . }}
       {{ end }}
       {{ end }}
